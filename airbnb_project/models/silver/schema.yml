@@ -197,16 +197,41 @@ models:
     columns:
       - name: listing_id
         description: listing identificator
+        data_type: bigint
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bigint
       - name: id
         description: identificator
+        data_type: bigint
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bigint
       - name: date
         description: date of review
+        data_type: date
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: Date
       - name: reviewer_id
         description: reviewer identificator
+        data_type: bigint
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: bigint
       - name: reviewer_name
         description: reviewer's name
+        tests:
+          - not_null
       - name: comments
         description: comments
+        tests:
+          - not_null
 
 
   - name: airbnb_calendar_silver
