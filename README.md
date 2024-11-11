@@ -86,47 +86,50 @@ O dicionário dos dados também está disponível no website: "http://insideairb
 #### 2. Camada silver:
 - Houve tratamento dos dados, seleção de colunas adequadas ao projeto e testes de qualidade utilizando 'Great Expectation'
 
-##### Table Listings:
+##### **Table Listings:**
 </br>
-| Nome da Coluna          | Tipo de Dado     | Testes                                                                                                                   |
-|-------------------------|------------------|--------------------------------------------------------------------------------------------------------------------------|
-| id                      | bigint           | unique, not_null, dbt_expectations.expect_column_values_to_be_of_type: bigint                                            |
-| listing_url             | text             | unique, not_null                                                                                                         |
-| scrape_id               | bigint           | not_null, dbt_expectations.expect_column_values_to_be_of_type: bigint                                                    |
-| last_scraped            | date             | not_null, dbt_expectations.expect_column_values_to_be_of_type: Date                                                      |
-| source                  | text             |                                                                                                                          |
-| name                    | text             | not_null                                                                                                                 |
-| description             | text             | not_null                                                                                                                 |
-| neighborhood_overview   | text             | not_null                                                                                                                 |
-| host_id                 | integer          | not_null, dbt_expectations.expect_column_values_to_be_of_type: integer                                                   |
-| host_url                | text             |                                                                                                                          |
-| host_name               | text             | not_null                                                                                                                 |
-| host_since              | date             | dbt_expectations.expect_column_values_to_be_of_type: Date                                                                |
-| host_location           | text             | not_null                                                                                                                 |
-| host_about              | text             | not_null                                                                                                                 |
-| neighbourhood           | text             | not_null                                                                                                                 |
-| latitude                | numeric          | not_null                                                                                                                 |
-| longitude               | numeric          | not_null                                                                                                                 |
-| property_type           | text             | not_null                                                                                                                 |
-| room_type               | text             | not_null, dbt_expectations.expect_column_values_to_be_in_set: Entire home/apt, Shared room, Private room, Hotel room     |
-| accommodates            | integer          | not_null, dbt_expectations.expect_column_values_to_be_of_type: integer                                                   |
-| bedrooms                | integer          | not_null, check_value_is_not_negative, dbt_expectations.expect_column_values_to_be_of_type: integer                      |
-| beds                    | integer          | not_null, check_value_is_not_negative, dbt_expectations.expect_column_values_to_be_of_type: integer                      |
-| amenities               | json             | not_null                                                                                                                 |
-| price                   | double precision | check_value_is_not_negative, not_null                                                                                    |
-| minimum_nights          | integer          | check_value_is_not_negative, not_null, dbt_expectations.expect_column_values_to_be_of_type: integer                      |
-| maximum_nights          | integer          | check_value_is_not_negative, not_null, dbt_expectations.expect_column_values_to_be_of_type: integer                      |
-| has_availability        | boolean          | not_null, dbt_expectations.expect_column_values_to_be_of_type: boolean                                                   |
-| availability_365        | integer          | check_value_is_not_negative, not_null, dbt_expectations.expect_column_values_to_be_of_type: integer                      |
-| number_of_reviews       | integer          | check_value_is_not_negative, not_null, dbt_expectations.expect_column_values_to_be_of_type: integer                      |
-| first_review            | date             | dbt_expectations.expect_column_values_to_be_of_type: Date                                                                |
-| last_review             | date             | dbt_expectations.expect_column_values_to_be_of_type: Date                                                                |
-| review_scores_rating    | numeric          | check_value_is_not_negative, dbt_expectations.expect_column_values_to_be_of_type: numeric                                |
-| instant_bookable        | boolean          | not_null, dbt_expectations.expect_column_values_to_be_of_type: boolean                                                   |
-| reviews_per_month       | numeric          | check_value_is_not_negative, dbt_expectations.expect_column_values_to_be_of_type: numeric                                |
 
-##### Table Reviews:
+| Nome da Coluna        | Tipo de Dado      | Testes                                                                                       |
+|-----------------------|-------------------|----------------------------------------------------------------------------------------------|
+| id                    | bigint            | unique, not_null, dbt_expectations.expect_column_values_to_be_of_type: bigint                |
+| listing_url           | text              | unique, not_null                                                                             |
+| scrape_id             | bigint            | not_null, dbt_expectations.expect_column_values_to_be_of_type: bigint                        |
+| last_scraped          | date              | not_null, dbt_expectations.expect_column_values_to_be_of_type: Date                          |
+| source                | text              |                                                                                              |
+| name                  | text              | not_null                                                                                     |
+| description           | text              | not_null                                                                                     |
+| neighborhood_overview | text              | not_null                                                                                     |
+| host_id               | integer           | not_null, dbt_expectations.expect_column_values_to_be_of_type: integer                       |
+| host_url              | text              |                                                                                              |
+| host_name             | text              | not_null                                                                                     |
+| host_since            | date              | dbt_expectations.expect_column_values_to_be_of_type: Date                                    |
+| host_location         | text              | not_null                                                                                     |
+| host_about            | text              | not_null                                                                                     |
+| neighbourhood         | text              | not_null                                                                                     |
+| latitude              | numeric           | not_null                                                                                     |
+| longitude             | numeric           | not_null                                                                                     |
+| property_type         | text              | not_null                                                                                     |
+| room_type             | text              | not_null, dbt_expectations.expect_column_values_to_be_in_set: Entire home/apt, Shared room, Private room, Hotel room |
+| accommodates          | integer           | not_null, dbt_expectations.expect_column_values_to_be_of_type: integer                       |
+| bedrooms              | integer           | not_null, check_value_is_not_negative, dbt_expectations.expect_column_values_to_be_of_type: integer  |
+| beds                  | integer           | not_null, check_value_is_not_negative, dbt_expectations.expect_column_values_to_be_of_type: integer  |
+| amenities             | json              | not_null                                                                                     |
+| price                 | double precision  | check_value_is_not_negative, not_null                                                        |
+| minimum_nights        | integer           | check_value_is_not_negative, not_null, dbt_expectations.expect_column_values_to_be_of_type: integer |
+| maximum_nights        | integer           | check_value_is_not_negative, not_null, dbt_expectations.expect_column_values_to_be_of_type: integer |
+| has_availability      | boolean           | not_null, dbt_expectations.expect_column_values_to_be_of_type: boolean                       |
+| availability_365      | integer           | check_value_is_not_negative, not_null, dbt_expectations.expect_column_values_to_be_of_type: integer |
+| number_of_reviews     | integer           | check_value_is_not_negative, not_null, dbt_expectations.expect_column_values_to_be_of_type: integer |
+| first_review          | date              | dbt_expectations.expect_column_values_to_be_of_type: Date                                    |
+| last_review           | date              | dbt_expectations.expect_column_values_to_be_of_type: Date                                    |
+| review_scores_rating  | numeric           | check_value_is_not_negative, dbt_expectations.expect_column_values_to_be_of_type: numeric    |
+| instant_bookable      | boolean           | not_null, dbt_expectations.expect_column_values_to_be_of_type: boolean                       |
+| reviews_per_month     | numeric           | check_value_is_not_negative, dbt_expectations.expect_column_values_to_be_of_type: numeric    |
+
+
+##### **Table Reviews:**
 </br>
+
 | Nome da Coluna  | Tipo de Dado | Testes                                                                        |
 |-----------------|--------------|-------------------------------------------------------------------------------|
 | listing_id      | bigint       | not_null, dbt_expectations.expect_column_values_to_be_of_type: bigint         |
@@ -136,8 +139,9 @@ O dicionário dos dados também está disponível no website: "http://insideairb
 | reviewer_name   | text         | not_null                                                                      |
 | comments        | text         | not_null                                                                      |
 
-##### Table Calendar:
+##### **Table Calendar:**
 </br>
+
 | Nome da Coluna  | Tipo de Dado      | Testes                                                                        |
 |-----------------|-------------------|-------------------------------------------------------------------------------|
 | listing_id      | bigint            | not_null, dbt_expectations.expect_column_values_to_be_of_type: bigint         |
