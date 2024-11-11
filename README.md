@@ -1,10 +1,9 @@
 # Projeto Final - Engenharia Analitica
 > *Turma 11080 - Santander Coders 2024 - Engenharia de Dados*
 
-Desenvolvimento do projeto "Airbnb" com o intuito de extrair e trasformar dados do site [AirbnbInside](http://insideairbnb.com/) relacionado a hospedagem na cidade do rio de janeiro, o dados serao carregados em banco de dados 
-postgress e tratados utilziando DBT para obtencao de insight de negocio na camada gold.
+Desenvolvimento do projeto "Airbnb" com o intuito de extrair e trasformar dados do site [AirbnbInside](http://insideairbnb.com/) relacionado a hospedagem na cidade do rio de janeiro. Os dados serão carregados em banco de dados PostgreSQL e tratados utilizando DBT e Great Expectations para obtençãoo de insights de negócio na camada gold.
 
-**Todo projeto foi desenvolvido com a linguagem de programação Python e utilziando framework Dbt.**
+**Todo projeto foi desenvolvido com a linguagem de programação Python e framework Dbt.**
 
 ## ✒️Autores 
 - [Alessandra Cruz](https://github.com/alessandracruz)
@@ -13,6 +12,16 @@ postgress e tratados utilziando DBT para obtencao de insight de negocio na camad
 - [Diogo Moura](https://github.com/HyogoMoura)
 - [Felipe Zanardo](https://github.com/FelipeBZanardo)
 - [Thiago Silva](https://github.com/thiagodemedeiros)
+
+## 📓 Acesso aos arquivos utilizados como fonte de dados do projeto
+
+- [Reviews](https://drive.google.com/file/d/1XTMhsYl_g5qpJq2V__FhDeRfauUPu18P/view?usp=drive_link)
+- [Listings](https://drive.google.com/file/d/1DbXndz8ePvNSFf4Gsudhii5yYMMRfgxp/view?usp=drive_link)
+- [Calendar](https://drive.google.com/file/d/1-pRla_tCidAQ744MFtX0YEEcpUXDf2DL/view?usp=drive_link)
+
+## 🧾 Dicionário de Dados:
+
+[Inside Airbnb Data Dictionary](https://docs.google.com/spreadsheets/d/1iWCNJcSutYqpULSQHlNyGInUvHg2BoUGoNRIGa6Szc4/edit?gid=1322284596#gid=1322284596)
 
 ## 📋 Enunciado do Projeto
 
@@ -73,27 +82,49 @@ O dicionário dos dados também está disponível no website: "http://insideairb
 
 
 ## ☑️  Pré-requisitos
-- Ter o DBT instalado
-- Ter o postgress instalado de preferencia versao 10 ou superior
-- Configura a engine de acesso
-- ajustar o profile.yml para o acesso ao banco local
-
+- Ter o DBT instalado;
+- Ter o PostgreSQL instalado de preferência versão 10 ou superior;
+- Configurar a engine de acesso com a senha do PostgreSQL;
+- Ajustar o profile.yml para o acesso ao banco local;
 
 
 ## ⚙️ Passo a passo para executar o projeto:
 
+1. Clone desse projeto;
+2. Abrir o projeto no VS Code;
+3. Fazer o download dos 3 [arquivos.csv](#-acesso-aos-arquivos-utilizados-como-fonte-de-dados-do-projeto)
+4. Alterar a senha do PostgreSQL que você configurou ao instalá-lo no arquivo 'projeto_analytics_engineering.ipynb':
+
+<p align="center">
+  <img src="./_captures/senha_postgresql.png">
+</p>
+
+5. Inicializar o notebook 'projeto_analytics_engineering.ipynb' com 'Run All'; 
+**Esse processo demora quase uma hora para ser realizado devido a intensa quantidade de dados.**
+6. Abrir o terminar no VS Code com o atalho <Ctrl + '>;
+7. Acessar o diretório 'airbnb_project' com o comando <cd airbnb_project>;
+8. Rodar todos os arquivos SQL e testes do Great Expectations com o comando <dbt build>;
+9. Verificar todas as tables e views persistidas no PostgreSQL.
+
 >**Assistir o vídeo de demonstração do projeto!**
 
-## 🛠️ Tecnologias Utilizas
+## 🛠️ Tecnologias Utilizadas
 
 * [Python](https://www.python.org/) - Linguagem de Programação
 * [Postgres](https://www.postgresql.org/)) - Gerenciador de banco de dados
 * [dbt](https://www.getdbt.com/)) - Framework de trasformacao de dados
+* [Great Expectation](https://greatexpectations.io/) - Qualidade e testes de dados
+* [VS Code](https://code.visualstudio.com/) - IDE
 
 ## 🚨 Dificuldades
+-  Configurar todo o ambiente de trabalho, seja o Postgres, o DBT e o Great Expectations;
+-  SQL, pois infelizmente não faz parte da ementa do curso.
+-  Saber qual teste de qualidade usar, já que existe uma enorme variedade no Great Expectations.
+-  Processo demorado na persistência dos dados.
 
 ## 📈 Melhorias futuras:
-
+- Aumentar a base de dados para extração de mais insights de negócio;
+- Utilizar um banco de dados presente em nuvem para não precisar configurar o PostgreSQL localmente.
 
 
 
