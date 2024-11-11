@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: alex_most_reviewed_gold
+  - name: most_reviewed_gold
     description: >
       Retorna os anúncios mais comentados, em ordem decrescente.
     columns:
@@ -14,7 +14,7 @@ models:
         description: contagem de reviews do anúncio
         tests:
           - dbt_expectations.expect_column_values_to_not_be_null
-  - name: alex_score_host_gold
+  - name: score_host_gold
     description: |
       Calcula a média das pontuações dos donos de imóvel.
     tests:
@@ -42,7 +42,7 @@ models:
               max_value: 5
           - dbt_expectations.expect_column_values_to_not_be_null
 
-  - name: alex_count_property_host_gold
+  - name: count_property_host_gold
     description: |
       Calcula a contagem de imóveis por dono.
     tests:
@@ -70,7 +70,7 @@ models:
               max_value: 200
           - dbt_expectations.expect_column_values_to_not_be_null
 
-  - name: diana_avg_occupancy_by_neighborhood_gold
+  - name: avg_occupancy_by_neighborhood_gold
     description: >
       Retorna a taxa média de ocupação anual das propriedades por bairro, em ordem decrescente.
       Isso ajuda a identificar áreas com maior demanda de hospedagem.
@@ -91,7 +91,7 @@ models:
               min_value: 0
               max_value: 365
 
-  - name: diana_host_location_summary_gold
+  - name: host_location_summary_gold
     description: >
       Resumo das localizações dos hosts, mostrando o total de propriedades por localização.
       Esse modelo ajuda a identificar as áreas com maior concentração de hosts no Airbnb.
@@ -110,7 +110,7 @@ models:
         tests:
           - dbt_expectations.expect_column_values_to_not_be_null
 
-  - name: Ale_avg_price_by_region_and_type
+  - name: avg_price_by_region_and_type
     description: >
       Retorna a média de preço por região e tipo de acomodação.
     columns:
@@ -130,10 +130,9 @@ models:
         data_type: numeric
         description: Média de preço das acomodações para cada região e tipo. Valores em reais (BRL).
         tests:
-          - dbt_expectations.expect_column_values_to_be_greater_than:
-              value: 0
+          - check_value_is_not_negative
 
-  - name: Ale_avg_review_score_by_region
+  - name: avg_review_score_by_region
     description: >
       Retorna a média de avaliação por região.
     columns:
@@ -151,7 +150,7 @@ models:
               min_value: 0
               max_value: 5
 
-  - name: Ale_avg_occupancy_rate_by_month_and_region
+  - name: avg_occupancy_rate_by_month_and_region
     description: >
       Retorna a taxa média de ocupação por mês e por região.
     columns:
@@ -175,7 +174,7 @@ models:
               min_value: 0
               max_value: 1
 
-  - name: Ale_common_amenities_in_high_rated_listings
+  - name: common_amenities_in_high_rated_listings
     description: >
       Retorna as comodidades mais comuns em listagens com avaliações altas.
     columns:
