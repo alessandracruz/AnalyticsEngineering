@@ -110,3 +110,84 @@ models:
         tests:
           - dbt_expectations.expect_column_values_to_not_be_null
 
+  - name: Ale_avg_price_by_region_and_type
+    description: >
+      Retorna a média de preço por região e tipo de acomodação.
+    columns:
+      - name: region
+        data_type: text
+        description: Nome da região (bairro) onde o imóvel está localizado.
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: accommodation_type
+        data_type: text
+        description: Tipo de acomodação como casa, apartamento, quarto, estúdio.
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: avg_price
+        data_type: numeric
+        description: Média de preço das acomodações para cada região e tipo. Valores em reais (BRL).
+        tests:
+          - dbt_expectations.expect_column_values_to_be_greater_than:
+              value: 0
+
+  - name: Ale_avg_review_score_by_region
+    description: >
+      Retorna a média de avaliação por região.
+    columns:
+      - name: region
+        data_type: text
+        description: Nome da região (bairro) onde o imóvel está localizado.
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: avg_review_score
+        data_type: numeric
+        description: Média de avaliação das acomodações para cada região. A nota varia de 0 a 5.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 5
+
+  - name: Ale_avg_occupancy_rate_by_month_and_region
+    description: >
+      Retorna a taxa média de ocupação por mês e por região.
+    columns:
+      - name: region
+        data_type: text
+        description: Nome da região (bairro) onde o imóvel está localizado.
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: month
+        data_type: text
+        description: Mês para o qual a taxa de ocupação foi calculada.
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: occupancy_rate
+        data_type: numeric
+        description: Taxa média de ocupação das acomodações para cada mês e região. A taxa varia entre 0 e 1.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1
+
+  - name: Ale_common_amenities_in_high_rated_listings
+    description: >
+      Retorna as comodidades mais comuns em listagens com avaliações altas.
+    columns:
+      - name: amenity
+        data_type: text
+        description: Nome da comodidade oferecida na listagem (ex:Wi-Fi, cozinha).
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
+      - name: frequency
+        data_type: integer
+        description: Frequência da comodidade entre as listagens com avaliações altas.
+        tests:
+          - dbt_expectations.expect_column_values_to_not_be_null
+
