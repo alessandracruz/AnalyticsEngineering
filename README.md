@@ -1,4 +1,4 @@
-# Projeto Final - Engenharia Analítica
+# Projeto Final - Analytics Engineering
 > *Turma 11080 - Santander Coders 2024 - Engenharia de Dados*
 
 Desenvolvimento do projeto "Airbnb" com o intuito de extrair e trasformar dados do site [AirbnbInside](http://insideairbnb.com/) relacionado a hospedagem na cidade do rio de janeiro. Os dados serão carregados em banco de dados PostgreSQL e tratados utilizando DBT e Great Expectations para obtençãoo de insights de negócio na camada gold.
